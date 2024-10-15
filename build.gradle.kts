@@ -20,6 +20,11 @@ class Dependencies {
 val mod = ModInfo()
 val deps = Dependencies()
 
+version = mod.version
+group = mod.group
+
+base.archivesName = "${mod.id}-${mod.version}"
+
 loom {
     splitEnvironmentSourceSets()
     accessWidenerPath = file("src/main/resources/${mod.id}.accesswidener")
@@ -28,6 +33,11 @@ loom {
         sourceSet(sourceSets.getByName("main"))
         sourceSet(sourceSets.getByName("client"))
     }
+}
+
+repositories {
+    mavenCentral()
+    maven("https://maven.callmeecho.dev/releases/")
 }
 
 dependencies {
@@ -60,7 +70,6 @@ java {
     sourceCompatibility = JavaVersion.VERSION_21
     targetCompatibility = JavaVersion.VERSION_21
 }
-
 
 tasks.withType<JavaCompile> {
     options.encoding = "UTF-8"
