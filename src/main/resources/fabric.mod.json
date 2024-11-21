@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "id": "template",
-  "version": "${version}",
+  "id": "${mod_id}",
+  "version": "${mod_version}",
   "name": "Template",
   "description": "",
   "authors": [],
@@ -27,9 +27,8 @@
       "environment": "client"
     }
   ],
-  "accessWidener": "template.accesswidener",
   "depends": {
-    "fabricloader": ">=${loader_version}",
+    "fabricloader": ">=${fabric_loader_version}",
     "minecraft": "~${minecraft_version}",
     "fabric-api": "*",
     "java": ">=21"
