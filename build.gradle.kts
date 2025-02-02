@@ -12,10 +12,10 @@ class ModInfo {
 
 val mod = ModInfo()
 
-version = mod.version
+version = "${mod.version}+${libs.versions.minecraft.get()}"
 group = mod.group
 
-base.archivesName = "${mod.id}-${mod.version}"
+base.archivesName = mod.id
 
 loom {
 	splitEnvironmentSourceSets()
@@ -63,7 +63,9 @@ tasks.withType<JavaCompile> {
 	options.release = 21
 }
 
-tasks.jar { from("LICENSE") { rename { "${it}_${base.archivesName}" } } }
+tasks.jar {
+	from("LICENSE") { rename { "${it}_${base.archivesName.get()}" } }
+}
 
 modrinth {
 	token.set(System.getenv("MODRINTH_TOKEN"))
